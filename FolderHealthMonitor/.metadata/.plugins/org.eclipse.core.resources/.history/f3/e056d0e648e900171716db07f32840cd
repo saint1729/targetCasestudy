@@ -1,0 +1,16 @@
+package com.healthMonitor;
+
+import java.util.Timer;
+
+public class HealthMonitorMain {
+
+	public static void main(String args[]) throws InterruptedException {
+
+		Timer time = new Timer();
+		HealthMonitorScheduler st = new HealthMonitorScheduler();
+		time.schedule(st, 0, 1000);
+
+		
+		
+	}
+}

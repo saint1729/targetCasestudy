@@ -1,0 +1,5 @@
+package com.itforall.itforallam.repository;
+
+public interface FulfilmentOrderRepository {
+
+}

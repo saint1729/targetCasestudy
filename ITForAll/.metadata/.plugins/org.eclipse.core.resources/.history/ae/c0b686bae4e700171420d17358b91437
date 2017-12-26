@@ -1,0 +1,12 @@
+package com.itforall.itforallam.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import com.itforall.itforallam.model.AssetInventory;
+import com.itforall.itforallam.model.AssetRequests;
+import com.itforall.itforallam.model.Assets;
+
+public interface AssetInventoryRepository extends MongoRepository<AssetInventory, Long> {
+
+    public AssetRequests findOneByAsset(Assets asset);
+	
+}

@@ -1,0 +1,13 @@
+package com.itforall.itforallam.model;
+
+import org.springframework.data.annotation.Id;
+
+public class Assets {
+
+    @Id
+    private Long id;
+    private String name;
+    private int price;
+    private String type;
+    
+}

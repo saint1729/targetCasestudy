@@ -1,0 +1,102 @@
+package com.itforall.itforallam.model;
+
+import org.springframework.data.annotation.Id;
+
+public class AssetRequests {
+
+    @Id
+    private Long requestId;
+    private Long assetId;
+    private Long employeeId;
+    private String requestDate;
+    private String issueDate;
+    private int assetReqCount;
+    private int fulfillDate;
+
+    
+    /**
+	 * @return the requestId
+	 */
+	public Long getRequestId() {
+		return requestId;
+	}
+	/**
+	 * @param requestId the requestId to set
+	 */
+	public void setRequestId(Long requestId) {
+		this.requestId = requestId;
+	}
+	/**
+	 * @return the assetId
+	 */
+	public Long getAssetId() {
+		return assetId;
+	}
+	/**
+	 * @param assetId the assetId to set
+	 */
+	public void setAssetId(Long assetId) {
+		this.assetId = assetId;
+	}
+	/**
+	 * @return the employeeId
+	 */
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+	/**
+	 * @param employeeId the employeeId to set
+	 */
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
+	/**
+	 * @return the requestDate
+	 */
+	public String getRequestDate() {
+		return requestDate;
+	}
+	/**
+	 * @param requestDate the requestDate to set
+	 */
+	public void setRequestDate(String requestDate) {
+		this.requestDate = requestDate;
+	}
+	/**
+	 * @return the issueDate
+	 */
+	public String getIssueDate() {
+		return issueDate;
+	}
+	/**
+	 * @param issueDate the issueDate to set
+	 */
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
+	/**
+	 * @return the assetReqCount
+	 */
+	public int getAssetReqCount() {
+		return assetReqCount;
+	}
+	/**
+	 * @param assetReqCount the assetReqCount to set
+	 */
+	public void setAssetReqCount(int assetReqCount) {
+		this.assetReqCount = assetReqCount;
+	}
+	/**
+	 * @return the fulfillDate
+	 */
+	public int getFulfillDate() {
+		return fulfillDate;
+	}
+	/**
+	 * @param fulfillDate the fulfillDate to set
+	 */
+	public void setFulfillDate(int fulfillDate) {
+		this.fulfillDate = fulfillDate;
+	}
+
+}

@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.itforall'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/org.springframework/spring-web
+	compile group: 'org.springframework', name: 'spring-web', version: '5.0.2.RELEASE'
+	// https://mvnrepository.com/artifact/io.swagger/swagger-annotations
+	compile group: 'io.swagger', name: 'swagger-annotations', version: '2.0.0-rc2'
+	// https://mvnrepository.com/artifact/com.mangofactory/swagger-springmvc
+	compile group: 'com.mangofactory', name: 'swagger-springmvc', version: '1.0.2'
+}

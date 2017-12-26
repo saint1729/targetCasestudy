@@ -1,0 +1,13 @@
+package com.itforall.itforallam;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@EnableAutoConfiguration
+public class ItforallamApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ItforallamApplication.class, args);
+	}
+}

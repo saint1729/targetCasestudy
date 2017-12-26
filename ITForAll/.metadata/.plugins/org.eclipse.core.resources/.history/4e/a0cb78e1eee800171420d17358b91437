@@ -1,0 +1,111 @@
+package com.itforall.itforallam.service;
+
+import java.util.Date;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.itforall.itforallam.model.AssetInventory;
+import com.itforall.itforallam.model.AssetRequests;
+import com.itforall.itforallam.model.FulfilmentOrders;
+import com.itforall.itforallam.repository.AssetInventoryRepository;
+import com.itforall.itforallam.repository.AssetRequestsRepository;
+import com.itforall.itforallam.repository.AssetsRepository;
+import com.itforall.itforallam.repository.FulfilmentOrdersRepository;
+
+@Service
+public class AssetService {
+	
+	@Autowired
+    AssetRequestsRepository assetRequestsRepository;
+	
+	@Autowired
+    AssetInventoryRepository assetInventoryRepository;
+	
+	@Autowired
+    FulfilmentOrdersRepository fulfilmentOrdersRepository;
+	
+	@Autowired
+    AssetsRepository assetsRepository;
+	
+	
+	public void createAssetRequest(AssetRequests assetRequest) {
+		
+		Long assetId = assetRequest.getAssetId();
+
+		AssetInventory assetInventory = assetInventoryRepository.findOneByAssetId(assetId);
+		
+		Long totalAssetCount = assetInventory.getTotalAssetCount();
+
+		List<FulfilmentOrders> fulfilmentOrders = fulfilmentOrdersRepository.findByAssetId(assetId);
+		
+		if(fulfilmentOrders != null) {
+			Collections.sort(fulfilmentOrders, new Comparator<FulfilmentOrders>() {
+			    public int compare(FulfilmentOrders fo1, FulfilmentOrders fo2) {
+			        return fo1.getExpFulfilmentDate().compareTo(fo2.getExpFulfilmentDate());
+			    }
+			});
+		}
+		
+		FulfilmentOrders fulfilmentOrder = fulfilmentOrders.get(0);
+		Date currDate = new Date(System.currentTimeMillis());
+		
+		assetRequest.setRequestDate(currDate);
+		
+		if(totalAssetCount > 0) {
+			assetInventory.setTotalAssetCount(totalAssetCount-1);
+			assetRequest.setRequestStatus("Processed");
+			assetRequest.setFulfilmentDate(currDate);
+			assetRequest.setExpFulfilmentDate(currDate);
+			assetRequestsRepository.save(assetRequest);
+			assetInventoryRepository.save(assetInventory);
+		} else if(totalAssetCount == 0) {
+			if(fulfilmentOrders != null) {
+				if(fulfilmentOrder.getExpFulfilmentDate().getTime() <= currDate.getTime()) {
+					assetInventory.setTotalAssetCount(fulfilmentOrder.getReqAssetCount());
+					assetInventoryRepository.save(assetInventory);
+				}
+				Long reqAssetCount = fulfilmentOrder.getReqAssetCount();
+				Long pendingAssetCount = fulfilmentOrder.getPendingAssetCount();
+				if(pendingAssetCount < reqAssetCount) {
+					fulfilmentOrder.setPendingAssetCount(pendingAssetCount+1);
+					Date expFulfilmentDate = fulfilmentOrder.getExpFulfilmentDate();
+					assetRequest.setRequestStatus("Processing");
+					assetRequest.setFulfilmentDate(null);
+					assetRequest.setExpFulfilmentDate(expFulfilmentDate);
+					fulfilmentOrder.setPendingAssetCount(pendingAssetCount+1);
+					assetRequestsRepository.save(assetRequest);
+					fulfilmentOrdersRepository.save(fulfilmentOrder);
+				} else if(pendingAssetCount == reqAssetCount) {
+					Long orderId = fulfilmentOrder.getOrderId();
+					Date expFulfilmentDate = fulfilmentOrder.getExpFulfilmentDate();
+					assetRequest.setRequestStatus("Processing");
+					assetRequest.setFulfilmentDate(null);
+					fulfilmentOrder.setPendingAssetCount(0L);
+					assetRequest.setExpFulfilmentDate(expFulfilmentDate);
+					fulfilmentOrdersRepository.delete(orderId);
+					assetRequestsRepository.save(assetRequest);
+				} else {
+					FulfilmentOrders newOrder = new FulfilmentOrders();
+					newOrder.setAssetId(assetId);
+					Date tenDaysLaterDate = new Date(System.currentTimeMillis()+30000L);
+					newOrder.setExpFulfilmentDate(tenDaysLaterDate);
+					newOrder.setPendingAssetCount(0L);
+					newOrder.setReqAssetCount(3L);
+					assetRequest.setRequestStatus("Processing");
+					assetRequest.setFulfilmentDate(null);
+					assetRequest.setExpFulfilmentDate(tenDaysLaterDate);
+					fulfilmentOrdersRepository.save(newOrder);
+					assetRequestsRepository.save(assetRequest);
+				}
+			}
+		}
+		
+		
+	}
+	
+
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+<fullyQualifiedTypeName name="com.mangofactory.swagger.plugin.EnableSwagger"/>
+<fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="springfox.documentation.spring.web.plugins.Docket"/>
+<fullyQualifiedTypeName name="springfox.documentation.spi.DocumentationType"/>
+<fullyQualifiedTypeName name="springfox.documentation.builders.RequestHandlerSelectors"/>
+<fullyQualifiedTypeName name="springfox.documentation.service.ApiInfo"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.EnableAutoConfiguration"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.config.SwaggerConfig"/>
+<fullyQualifiedTypeName name="io.swagger.models.Contact"/>
+<fullyQualifiedTypeName name="springfox.documentation.service.Contact"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.repository.EmployeesRepository"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.query.Query"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.query.Criteria"/>
+<fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.core.MongoOperations"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.model.Employees"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.model.AssetRequests"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.service.AssetService"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.repository.AssetsRepository"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.model.Assets"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.model.AssetInventory"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.repository.AssetInventoryRepository"/>
+<fullyQualifiedTypeName name="org.springframework.data.annotation.Id"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.repository.FulfilmentOrdersRepository"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.model.FulfilmentOrders"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.itforall.itforallam.repository.AssetRequestsRepository"/>
+</qualifiedTypeNameHistroy>

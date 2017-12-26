@@ -1,0 +1,7 @@
+package com.itforall.itforallam.config;
+
+
+@Configuration
+public class SwaggerConfig {
+
+}

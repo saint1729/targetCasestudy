@@ -1,0 +1,24 @@
+package com.healthMonitor;
+
+import java.util.Timer;
+
+import org.apache.commons.io.FileUtils;
+
+public class HealthMonitorMain {
+
+	final static String TEMP_FOLDER = "D:\\temp\\";
+	final static String SECURED_FOLDER = "D:\\secure\\";
+	
+	public static void main(String args[]) throws InterruptedException {
+
+		Timer time = new Timer();
+		HealthMonitorScheduler st = new HealthMonitorScheduler();
+		time.schedule(st, 0, 10000);
+
+		while(true) {
+			FileUtils.mo
+			Thread.sleep(2000);
+		}
+		
+	}
+}

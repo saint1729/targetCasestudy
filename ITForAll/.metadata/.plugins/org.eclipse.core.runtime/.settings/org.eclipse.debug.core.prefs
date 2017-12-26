@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+org.eclipse.debug.core.USE_STEP_FILTERS=false
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions>\r\n<expression enabled\="true" text\="employeesRepository"/>\r\n<expression enabled\="true" text\="id"/>\r\n<expression enabled\="true" text\="employeesRepository.findOne(0)"/>\r\n<expression enabled\="true" text\="employee"/>\r\n<expression enabled\="true" text\="fulfilmentOrders.size()"/>\r\n</watchExpressions>\r\n

@@ -1,0 +1,5 @@
+package com.itforall.itforallam.swagger;
+
+public class SwaggerConfig {
+
+}

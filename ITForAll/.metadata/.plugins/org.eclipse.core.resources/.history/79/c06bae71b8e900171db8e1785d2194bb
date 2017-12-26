@@ -1,0 +1,47 @@
+package com.itforall.itforallam.controller;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.itforall.itforallam.model.FulfilmentOrders;
+import com.itforall.itforallam.repository.FulfilmentOrdersRepository;
+
+@RestController
+@RequestMapping("/assetOrders")
+public class FulfilmentOrdersController {
+
+	 	@Autowired
+	    FulfilmentOrdersRepository fulfilmentOrdersRepository;
+
+	    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	    public void create(@RequestBody FulfilmentOrders fulfilmentOrder) {
+			Date tenDaysLaterDate = new Date(System.currentTimeMillis()+180000L);
+			fulfilmentOrder.setPendingAssetCount(0L);
+			fulfilmentOrder.setReqAssetCount(3L);
+			fulfilmentOrder.setExpFulfilmentDate(tenDaysLaterDate);
+	    	fulfilmentOrdersRepository.save(fulfilmentOrder);
+	    }
+
+	    @RequestMapping(value = "/{orderId}", method = RequestMethod.GET) 
+	    public FulfilmentOrders read(@PathVariable Long orderId) {
+	        return fulfilmentOrdersRepository.findOne(orderId);
+	    }
+
+	    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+	    public void update(@RequestBody FulfilmentOrders assetInventory) {
+	    	fulfilmentOrdersRepository.save(assetInventory);
+	    }
+
+//	    @RequestMapping(value = "/{orderId}", method = RequestMethod.DELETE) 
+//	    public void delete(@PathVariable Long orderId) {
+//	    	fulfilmentOrdersRepository.delete(orderId);
+//	    }
+
+}

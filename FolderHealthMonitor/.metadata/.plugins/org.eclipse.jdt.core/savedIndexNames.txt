@@ -1,0 +1,21 @@
+INDEX VERSION 1.127+D:\topcoder\target\FolderHealthMonitor\.metadata\.plugins\org.eclipse.jdt.core
+1108457450.index
+2642079100.index
+4059075343.index
+3040719954.index
+2015655414.index
+4097721751.index
+2706361553.index
+2851337953.index
+287401593.index
+4222273199.index
+3243948167.index
+772203894.index
+1430713659.index
+1748438679.index
+1114531665.index
+403738638.index
+2438542466.index
+1129800358.index
+3837031380.index
+2209604640.index

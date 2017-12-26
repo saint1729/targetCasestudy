@@ -1,0 +1,74 @@
+package com.itforall.itforallam.service;
+
+import java.sql.Date;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.itforall.itforallam.model.AssetInventory;
+import com.itforall.itforallam.model.AssetRequests;
+import com.itforall.itforallam.model.FulfilmentOrders;
+import com.itforall.itforallam.repository.AssetInventoryRepository;
+import com.itforall.itforallam.repository.AssetRequestsRepository;
+import com.itforall.itforallam.repository.AssetsRepository;
+import com.itforall.itforallam.repository.FulfilmentOrdersRepository;
+
+@Service
+public class AssetService {
+	
+	@Autowired
+    AssetRequestsRepository assetRequestsRepository;
+	
+	@Autowired
+    AssetInventoryRepository assetInventoryRepository;
+	
+	@Autowired
+    FulfilmentOrdersRepository fulfilmentOrdersRepository;
+	
+	@Autowired
+    AssetsRepository assetsRepository;
+	
+	
+	public void createAssetRequest(AssetRequests assetRequest) {
+		
+		Long assetId = assetRequest.getAssetId();
+
+		AssetInventory assetInventory = assetInventoryRepository.findOneByAssetId(assetId);
+		
+		Long totalAssetCount = assetInventory.getTotalAssetCount();
+		Long outstandingRequestCount = assetInventory.getOutstandingRequestCount();
+
+		List<FulfilmentOrders> fulfilmentOrders = fulfilmentOrdersRepository.findByAssetId(assetId);
+		
+		if(totalAssetCount > 0) {
+			assetInventory.setTotalAssetCount(totalAssetCount-1);
+			assetRequest.setRequestStatus("Processed");
+			assetRequestsRepository.save(assetRequest);
+			assetInventoryRepository.save(assetInventory);
+		} else if(totalAssetCount == 0) {
+			if(fulfilmentOrders != null) {
+				Collections.sort(fulfilmentOrders, new Comparator<FulfilmentOrders>() {
+				    public int compare(FulfilmentOrders fo1, FulfilmentOrders fo2) {
+				        return fo1.getExpFulfilmentDate().compareTo(fo2.getExpFulfilmentDate());
+				    }
+				});
+			
+				FulfilmentOrders fulfilmentOrder = fulfilmentOrders.get(0);
+				Long reqAssetCount = fulfilmentOrder.getReqAssetCount();
+				Long issuedAssetCount = fulfilmentOrder.getIssuedAssetCount();
+				fulfilmentOrder.setIssuedAssetCount(issuedAssetCount);
+				Date expFulfilmentDate = fulfilmentOrder.getExpFulfilmentDate();
+				assetRequest.setRequestStatus("Processing");
+				assetRequest.setFulfilmentDate(expFulfilmentDate);
+				assetRequestsRepository.save(assetRequest);
+			}
+		}
+		
+		
+	}
+	
+
+}

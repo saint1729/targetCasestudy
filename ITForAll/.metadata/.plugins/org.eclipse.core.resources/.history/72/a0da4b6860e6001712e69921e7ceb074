@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.itforall'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	//compile('org.springframework.boot:spring-boot-starter')
+	//compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+	
+	compile("org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE")
+	
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
+	
+	//testCompile('org.springframework.boot:spring-boot-starter-test')
+	
+	
+	compile group: 'org.springframework', name: 'spring-web', version: '5.0.2.RELEASE'
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+}

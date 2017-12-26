@@ -1,0 +1,23 @@
+package com.healthMonitor;
+
+import java.util.Timer;
+
+public class HealthMonitorMain {
+
+	public static void main(String args[]) throws InterruptedException {
+
+		Timer time = new Timer();
+		HealthMonitorScheduler st = new HealthMonitorScheduler();
+		time.schedule(st, 0, 10000);
+
+		while(true) {
+			System.out.println("Execution in Main Thread...." + i);
+			Thread.sleep(2000);
+			if (i == 5) {
+				System.out.println("Application Terminates");
+				System.exit(0);
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,10 @@
+package com.itforall.itforallam.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.itforall.itforallam.model.AssetRequests;
+
+public interface AssetRequestsRepository extends MongoRepository<AssetRequests, Long> {
+
+    public AssetRequests findOneByAssetId(Long assetId);
+}

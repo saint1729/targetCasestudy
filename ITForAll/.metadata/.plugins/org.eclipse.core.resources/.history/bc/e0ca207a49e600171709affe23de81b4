@@ -1,0 +1,5 @@
+package com.itforall.itforallam.resource;
+
+public class HelloResource {
+
+}

@@ -1,0 +1,18 @@
+package com.itforall.itforallam.model;
+
+import org.springframework.data.annotation.Id;
+
+public class AssetRequests {
+
+    @Id
+    private Long requestId;
+    private Assets asset;
+    private Employees employee;
+    private String requestDate;
+    private String issueDate;
+    private int assetReqCount;
+    private int fulfillDate;
+    
+
+
+}

@@ -1,0 +1,12 @@
+package com.itforall.itforallam.resource;
+
+public class DBOperations {
+
+    ApplicationContext ctx = new GenericXmlApplicationContext("SpringConfig.xml");
+
+    public MongoOperations getMongoOpertion() {
+        MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
+        return mongoOperation;
+    }
+
+}

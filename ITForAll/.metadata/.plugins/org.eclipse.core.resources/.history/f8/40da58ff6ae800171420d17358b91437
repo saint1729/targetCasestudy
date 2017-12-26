@@ -1,0 +1,104 @@
+package com.itforall.itforallam.model;
+
+import java.sql.Date;
+
+import org.springframework.data.annotation.Id;
+
+public class FulfilmentOrder {
+	
+	@Id
+    private Long orderId;
+	private Long assetId;
+    private Date expFulfilmentDate;
+    private Date requestDate;
+    private Long reqAssetCount;
+    private Long issuedAssetCount;
+    private Long requestStatus;
+    
+
+	/**
+	 * @return the orderId
+	 */
+	public Long getOrderId() {
+		return orderId;
+	}
+	/**
+	 * @param orderId the orderId to set
+	 */
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+	/**
+	 * @return the assetId
+	 */
+	public Long getAssetId() {
+		return assetId;
+	}
+	/**
+	 * @param assetId the assetId to set
+	 */
+	public void setAssetId(Long assetId) {
+		this.assetId = assetId;
+	}
+	/**
+	 * @return the expFulfilmentDate
+	 */
+	public Date getExpFulfilmentDate() {
+		return expFulfilmentDate;
+	}
+	/**
+	 * @param expFulfilmentDate the expFulfilmentDate to set
+	 */
+	public void setExpFulfilmentDate(Date expFulfilmentDate) {
+		this.expFulfilmentDate = expFulfilmentDate;
+	}
+	/**
+	 * @return the requestDate
+	 */
+	public Date getRequestDate() {
+		return requestDate;
+	}
+	/**
+	 * @param requestDate the requestDate to set
+	 */
+	public void setRequestDate(Date requestDate) {
+		this.requestDate = requestDate;
+	}
+	/**
+	 * @return the reqAssetCount
+	 */
+	public Long getReqAssetCount() {
+		return reqAssetCount;
+	}
+	/**
+	 * @param reqAssetCount the reqAssetCount to set
+	 */
+	public void setReqAssetCount(Long reqAssetCount) {
+		this.reqAssetCount = reqAssetCount;
+	}
+	/**
+	 * @return the issuedAssetCount
+	 */
+	public Long getIssuedAssetCount() {
+		return issuedAssetCount;
+	}
+	/**
+	 * @param issuedAssetCount the issuedAssetCount to set
+	 */
+	public void setIssuedAssetCount(Long issuedAssetCount) {
+		this.issuedAssetCount = issuedAssetCount;
+	}
+	/**
+	 * @return the requestStatus
+	 */
+	public Long getRequestStatus() {
+		return requestStatus;
+	}
+	/**
+	 * @param requestStatus the requestStatus to set
+	 */
+	public void setRequestStatus(Long requestStatus) {
+		this.requestStatus = requestStatus;
+	}
+
+}

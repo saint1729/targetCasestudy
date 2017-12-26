@@ -1,0 +1,17 @@
+package com.itforall.itforallam.model;
+
+import org.springframework.data.annotation.Id;
+
+public class AssetInventory {
+
+
+    @Id
+    private Long assetInventoryId;
+    private Long assetId;
+    private Long totalAssetCount;
+    //private int pendingRequestCount;
+    //private String type;
+
+    
+    
+}

@@ -1,0 +1,9 @@
+package com.itforall.itforallam.repository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface FulfilmentOrderRepository extends MongoRepository<FulfilmentOrders, Long> {
+
+    public FulfilmentOrders findOneByAssetId(Long assetId);
+
+}
